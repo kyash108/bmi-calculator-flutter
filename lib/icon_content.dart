@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
+
 class IconContent extends StatelessWidget {
-  const IconContent({Key key, this.gender, this.iconName}) : super(key: key);
+  const IconContent({Key key, this.gender, this.iconName});
   final String gender;
   final IconData iconName;
 
@@ -16,10 +19,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           "$gender",
-          style: TextStyle(
-              fontSize: 18.0,
-              color: Color(0xFF8D8E98)
-          ),
+          style: kLabelTextStyle,
         ),
       ],
     );

@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/bottom_button.dart';
 import '../constants.dart';
 import '../components/icon_content.dart';
-
+import 'package:bmi_calculator/calculate.dart';
 
 enum Gender{male,female}
 
@@ -132,7 +132,6 @@ class _InputPageState extends State<InputPage> {
                               onPressed: (){
                                 setState(() {
                                   weight = weight + 1;
-                                  print(weight);
                                 });
                               },
                             ),
@@ -184,12 +183,22 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap:(){
+              Calculate calc = Calculate(height,weight);
+
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context)=>ResultsPage()));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context)=>ResultsPage(
+                        bmiResults: calc.calculateBMI(),
+                        resultText: calc.getResults(),
+                        interpretation: calc.getInterpretation(),
+                      ),
+                  ),
+              );
             },
-          )
+          ),
         ],
-      )
+      ),
     );
   }
 }
